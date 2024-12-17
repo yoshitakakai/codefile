@@ -1,3 +1,5 @@
+//キーワードの1文字目に関連するワードを表示する
+
 const searchWordText = document.querySelector('#search-word-input');
 const prefectureList = document.querySelectorAll('#prefecture-list button');
 

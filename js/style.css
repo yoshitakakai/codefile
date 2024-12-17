@@ -1,5 +1,5 @@
-@import url(../../common/css/base_photo.css);
-body {
-  background-size: cover;
-  background: url("../common/bg_nature_2.jpg") center;
-}
+@charset "UTF-8";
+
+#prefecture-list button.hide {
+    display: none;
+  }

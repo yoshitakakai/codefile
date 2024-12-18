@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アクセシビリティ対応カルーセル</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 300px;
+    height: 200px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel img {
+    display: none;
+    max-width: 100%;
+    height: auto;
+}
+
+.carousel img.active {
+    display: block;
+    transition: opacity 1s ease-in-out;
+}
+
+button {
+    margin: 10px;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #eaeaea;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+    </style>
+</head>
+<body>
+
+<div id="carousel" class="carousel">
+    <img src="image1.jpg" alt="画像1">
+    <img src="image2.jpg" alt="画像2">
+    <img src="image3.jpg" alt="画像3">
+</div>
+
+<!-- ナビゲーションボタン -->
+<button id="prev" aria-label="前へ戻る">←</button>
+<button id="next" aria-label="次へ進む">→</button>
+
+<!-- 自動再生制御ボタン -->
+<button id="playPause" aria-label="自動再生停止">⏸️</button>
+
+<script>
+    let currentIndex = 0;
+const images = document.querySelectorAll("#carousel img");
+const intervalTime = 3000;  // 3秒ごとに自動切り替え
+let carouselInterval = setInterval(showNextSlide, intervalTime);
+
+// ボタン要素取得
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+const playPauseButton = document.getElementById('playPause');
+
+let isPlaying = true;
+
+// カルーセル表示切り替え処理
+function showSlide(index) {
+    images.forEach((img, idx) => {
+        img.classList.remove('active');
+        if (idx === index) img.classList.add('active');
+    });
+}
+
+function showNextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showSlide(currentIndex);
+}
+
+function showPrevSlide() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showSlide(currentIndex);
+}
+
+// 自動再生停止・開始ボタン処理
+function togglePlayPause() {
+    if (isPlaying) {
+        clearInterval(carouselInterval);
+        playPauseButton.textContent = '▶️';
+        playPauseButton.setAttribute('aria-label', '自動再生開始');
+    } else {
+        carouselInterval = setInterval(showNextSlide, intervalTime);
+        playPauseButton.textContent = '⏸️';
+        playPauseButton.setAttribute('aria-label', '自動再生停止');
+    }
+    isPlaying = !isPlaying;
+}
+
+// ボタンイベントリスナー設定
+prevButton.addEventListener('click', showPrevSlide);
+nextButton.addEventListener('click', showNextSlide);
+playPauseButton.addEventListener('click', togglePlayPause);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>モーダルウィンドウ WAI-ARIA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class='main'>
+        <div class='item'>
+          <div class='box'></div>
+          <button type='button' class='trigger js-modal-toggle'>モーダルウィンドウを開く</button>
+        </div>
+      </main>
+      <div class='modal js-modal' role='dialog' aria-modal='true' aria-labelledby='modal-title01'>
+        <div class='modal-container'>
+          <h2 id='modal-title01' class='modal-title'>モーダルウィンドウタイトル</h2>
+          <p>
+            <a href='#' class='modal-link'>モーダルウィンドウ内フォーカス可能要素</a>
+          </p>
+          <button type='button' aria-label='モーダルウィンドウを閉じる' class='modal-trigger js-modal-toggle'></button>
+        </div>
+      </div>
+      <script src="style.js"></script>
+</body>
+</html>

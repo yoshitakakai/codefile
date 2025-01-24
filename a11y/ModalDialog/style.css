@@ -1,0 +1,140 @@
+.main {
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+}
+
+.main .item {
+  min-width: 300px;
+}
+
+.main .box {
+  aspect-ratio: 1;
+  background-color: #ccc;
+}
+
+.main .trigger {
+  width: 100%;
+  display: block;
+  margin-inline: auto;
+  margin-top: 20px;
+  color: #333;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+.main .link {
+  color: #fff;
+  text-decoration: underline;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  opacity: 0;
+  overflow: clip auto;
+  transition: opacity 0.3s ease;
+}
+
+.modal.is-open {
+  opacity: 1;
+}
+
+.modal.is-open::backdrop {
+  opacity: 1;
+}
+
+.modal::backdrop {
+  background-color: rgba(124, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal .modal-container {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  row-gap: 30px;
+  width: 640px;
+  aspect-ratio: 1;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.modal .modal-container .modal-title {
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.modal .modal-container .modal-link {
+  color: #333;
+  text-decoration: underline;
+}
+
+.modal .modal-container .modal-trigger {
+  display: grid;
+  grid-template-areas: "line";
+  place-items: center;
+  width: 60px;
+  aspect-ratio: 1;
+  border: 2px solid #333;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.modal .modal-container .modal-trigger::before,
+.modal .modal-container .modal-trigger::after {
+  grid-area: line;
+  content: "";
+  width: 40px;
+  height: 2px;
+  background-color: #333;
+}
+
+.modal .modal-container .modal-trigger::before {
+  transform: rotate(45deg);
+}
+
+.modal .modal-container .modal-trigger::after {
+  transform: rotate(-45deg);
+}
+
+*:focus {
+  outline: 2px solid blue;
+}
+
+body {
+  width: 100%;
+  background-color: #333;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+dialog {
+  width: unset;
+  max-width: unset;
+  height: unset;
+  max-height: unset;
+  padding: unset;
+  margin: unset;
+  color: unset;
+  background-color: unset;
+  border: unset;
+  overflow: unset;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>デモページ</title>
+
+<link rel="stylesheet" href="test.css">
+
+</head>
+<body>
+
+<section
+  class="slider js-slider"
+  aria-roledescription="carousel"
+  aria-label="おすすめ商品一覧"
+>
+  <button class="slider_prev js-slider-prev">Previous</button>
+  <button class="slider_auto js-slider-auto">Stop</button>
+  <button class="slider_next js-slider-next">Next</button>
+  <div class="slider_list">
+    <div
+      class="slider_item js-slider-item is-show"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="1 of 6"
+    >
+      <a href="#">Slide1</a>
+    </div>
+    <div
+      class="slider_item js-slider-item"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="2 of 6"
+    >
+      <a href="#">Slide2</a>
+    </div>
+    <div
+      class="slider_item js-slider-item"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="3 of 6"
+    >
+      <a href="#">Slide3</a>
+    </div>
+    <div
+      class="slider_item js-slider-item"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="4 of 6"
+    >
+      <a href="#">Slide4</a>
+    </div>
+    <div
+      class="slider_item js-slider-item"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="5 of 6"
+    >
+      <a href="#">Slide5</a>
+    </div>
+    <div
+      class="slider_item js-slider-item"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="6 of 6"
+    >
+      <a href="#">Slide6</a>
+    </div>
+  </div>
+</section>
+
+<script src="test.js"></script>
+</body>
+</html>

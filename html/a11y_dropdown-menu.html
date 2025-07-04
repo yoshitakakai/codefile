@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Accessible Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .main-nav {
+      margin: 20px;
+    }
+
+    .menu-toggle {
+      display: none;
+      margin-bottom: 10px;
+    }
+
+    ul.menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu > li {
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .menu a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      background: #0bd;
+      color: white;
+      padding: 10px 50px;
+    }
+
+    .menu li {
+      list-style: none;
+    }
+
+    .toggle-icon {
+      margin-left: 10px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .sub-menu {
+      display: none;
+      padding-left: 0;
+    }
+
+    /* スマホ用: メニュー表示制御 */
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .menu.open {
+        display: block;
+      }
+
+      .sub-menu.open {
+        display: block;
+      }
+
+      .toggle-icon {
+        display: inline;
+      }
+    }
+
+    /* PC用: hoverでサブメニュー表示 */
+    @media screen and (min-width: 769px) {
+      .menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      .sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 169px;
+        background: #0bd;
+      }
+
+      .menu-item-has-children:hover > .sub-menu,
+      .menu-item-has-children:focus-within > .sub-menu {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="main-nav">
+    <button class="menu-toggle" aria-expanded="false">メニュー</button>
+    <ul class="menu">
+      <li class="menu-item menu-item-has-children">
+        <a href="#" aria-haspopup="true" aria-expanded="false">
+          親メニュー1
+          <span class="toggle-icon">+</span>
+        </a>
+        <ul class="sub-menu">
+          <li><a href="css.html">子1</a></li>
+          <li><a href="#">子2</a></li>
+        </ul>
+      </li>
+      <li class="menu-item menu-item-has-children">
+        <a href="#" aria-haspopup="true" aria-expanded="false">
+          親メニュー2
+          <span class="toggle-icon">+</span>
+        </a>
+        <ul class="sub-menu">
+          <li><a href="css.html">子1</a></li>
+          <li><a href="#">子2</a></li>
+        </ul>
+      </li>
+      <li class="menu-item"><a href="#">単独メニュー</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.menu');
+
+      toggle.addEventListener('click', function () {
+        menu.classList.toggle('open');
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+      });
+
+      function setupAccordionForMobile() {
+        const isMobile = window.innerWidth < 769;
+        const parents = document.querySelectorAll('.menu-item-has-children');
+
+        parents.forEach(parent => {
+          const link = parent.querySelector('a');
+          const submenu = parent.querySelector('.sub-menu');
+          const icon = parent.querySelector('.toggle-icon');
+
+          // 初期化
+          link.onclick = null;
+          link.onkeydown = null;
+
+          if (isMobile) {
+            submenu.classList.remove('open');
+            link.setAttribute('aria-expanded', 'false');
+            if (icon) icon.textContent = '+';
+
+            link.onclick = function (e) {
+              e.preventDefault();
+              const isOpen = submenu.classList.toggle('open');
+              link.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+              if (icon) icon.textContent = isOpen ? '−' : '+';
+            };
+
+            link.onkeydown = function (e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const isOpen = submenu.classList.toggle('open');
+                link.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                if (icon) icon.textContent = isOpen ? '−' : '+';
+              }
+            };
+          } else {
+            submenu.classList.remove('open');
+            link.setAttribute('aria-expanded', 'false');
+            if (icon) icon.textContent = '';
+          }
+        });
+      }
+
+      setupAccordionForMobile();
+      window.addEventListener('resize', setupAccordionForMobile);
+    });
+  </script>
+
+</body>
+</html>

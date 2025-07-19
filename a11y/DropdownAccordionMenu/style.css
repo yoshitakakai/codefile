@@ -1,0 +1,92 @@
+    body {
+      font-family: sans-serif;
+    }
+
+    .main-nav {
+      margin: 20px;
+    }
+
+    .menu-toggle {
+      display: none;
+      margin-bottom: 10px;
+    }
+
+    ul.menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu > li {
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .menu a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      background: #0bd;
+      color: white;
+      padding: 10px 50px;
+    }
+
+    .menu li {
+      list-style: none;
+    }
+
+    .toggle-icon {
+      margin-left: 10px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .sub-menu {
+      display: none;
+      padding-left: 0;
+    }
+
+    /* スマホ用: メニュー表示制御 */
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .menu.open {
+        display: block;
+      }
+
+      .sub-menu.open {
+        display: block;
+      }
+
+      .toggle-icon {
+        display: inline;
+      }
+    }
+
+    /* PC用: hoverでサブメニュー表示 */
+    @media screen and (min-width: 769px) {
+      .menu {
+        display: flex;
+        gap: 20px;
+      }
+
+      .sub-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 169px;
+        background: #0bd;
+      }
+
+      .menu-item-has-children:hover > .sub-menu,
+      .menu-item-has-children:focus-within > .sub-menu {
+        display: block;
+      }
+    }

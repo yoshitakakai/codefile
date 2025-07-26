@@ -3,30 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="">
   <title>Topに戻るボタン（フェードイン・フェードアウト対応）</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      height: 200vh; /* ページを長くするための高さ設定 */
-    }
-
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #007BFF;
-      color: white;
-      padding: 15px;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
-      opacity: 0; /* 初期状態は非表示 */
-      visibility: hidden; /* 初期状態は非表示 */
-      transition: opacity 0.5s ease, visibility 0.5s ease; /* フェードイン・フェードアウトのアニメーション */
-    }
-  </style>
 </head>
 <body>
 
@@ -52,34 +30,8 @@
 
   <button class="back-to-top" onclick="scrollToTop()">Topに戻る</button>
 
-  <script>
-    const backToTopButton = document.querySelector('.back-to-top');
-
-    // ページがスクロールされた際にボタンをフェードイン・フェードアウトする処理
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        backToTopButton.style.visibility = 'visible';
-        backToTopButton.style.opacity = '1';
-      } else {
-        backToTopButton.style.opacity = '0';
-        backToTopButton.style.visibility = 'hidden';
-      }
-    });
-
-    function scrollToTop() {
-      const duration = 100;
-      const interval = 15;
-      const step = window.scrollY / (duration / interval);
-
-      const scrollInterval = setInterval(() => {
-        if (window.scrollY <= 0) {
-          clearInterval(scrollInterval);
-        } else {
-          window.scrollBy(0, -step);
-        }
-      }, interval);
-    }
-  </script>
+  <script src="style.js"></script>
+    
 
 </body>
 </html>

@@ -1,37 +1,79 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>無限ループカルーセル</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>無限ループカルーセル</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-    <div id="carousel" class="carousel" role="region" aria-live="polite">
-        <div class="carousel-track">
-            <!-- 画像1 -->
-            <a href="#" tabindex="0" aria-hidden="false">
-                <img src="../img/image1.jpg" alt="画像1">
-            </a>
+<section class="slider js-slider" aria-roledescription="carousel" aria-label="おすすめ商品一覧">
+  <button class="slider_prev js-slider-prev">←</button>
+  <button class="slider_auto js-slider-auto">Stop</button>
+  <button class="slider_next js-slider-next">→</button>
 
-            <!-- 画像2 -->
-            <a href="https://yoshitakakai.net" tabindex="-1" aria-hidden="true">
-                <img src="../img/image2.jpg" alt="画像2">
-            </a>
+  <div class="slider_dotes" role="tablist" aria-label="商品選択">
+    <button
+      class="slider_dot js-slider-dot"
+      id="dot1"
+      role="tab"
+      aria-controls="slide1"
+      aria-selected="true"
+      tabindex="0"
+    >slide1</button>
+    <button
+      class="slider_dot js-slider-dot"
+      id="dot2"
+      role="tab"
+      aria-controls="slide2"
+      aria-selected="false"
+      tabindex="-1"
+    >slide2</button>
+    <button
+      class="slider_dot js-slider-dot"
+      id="dot3"
+      role="tab"
+      aria-controls="slide3"
+      aria-selected="false"
+      tabindex="-1"
+    >slide3</button>
+  </div>
 
-            <!-- 画像3 -->
-            <a href="#" tabindex="-1" aria-hidden="true">
-                <img src="../img/image3.jpg" alt="画像3">
-            </a>
-        </div>
+  <div class="slider_list">
+    <div
+      class="slider_item js-slider-item is-show"
+      id="slide1"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="1 of 3"
+      aria-labelledby="dot1"
+    >
+      <a href="#"><img src="/a11y/img/image1.jpg" alt="img1" /></a>
     </div>
+    <div
+      class="slider_item js-slider-item"
+      id="slide2"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="2 of 3"
+      aria-labelledby="dot2"
+    >
+      <a href="#"><img src="/a11y/img/image2.jpg" alt="img2" /></a>
+    </div>
+    <div
+      class="slider_item js-slider-item"
+      id="slide3"
+      role="group"
+      aria-roledescription="slide"
+      aria-label="3 of 3"
+      aria-labelledby="dot3"
+    >
+      <a href="#"><img src="/a11y/img/image3.jpg" alt="img3" /></a>
+    </div>
+  </div>
+</section>
 
-    <!-- ナビゲーションボタン -->
-    <button id="prev" aria-label="前へ戻る">←</button>
-    <button id="next" aria-label="次へ進む">→</button>
-
-    <script src="index.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

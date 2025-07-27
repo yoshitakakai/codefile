@@ -1,80 +1,20 @@
-/* ボタン設定 */
-button {
-    margin: 10px;
-    padding: 15px;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    transition: 0.3s;
+.slider_list {
+  position: relative;
 }
-
-button:hover {
-    background-color: #eaeaea;
+.slider_item {
+  position: relative;
+  opacity: 0;
+  transition: opacity 300ms;
 }
-
-button:active {
-    transform: scale(0.95);
+.slider_item:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-
-/* キーボードフォーカスインジケーター */
-button:focus {
-    outline: 2px solid #ff0;
+.slider_item.is-show {
+  z-index: 5;
+  opacity: 1;
 }
-
-/* カルーセルの基本設定 */
-.carousel {
-    display: flex;
-    overflow: hidden;
-    width: 300px;
-    height: 200px;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    background: #000;
-}
-
-.carousel-track {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* カルーセル内のリンクと画像 */
-.carousel-track a {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* 現在表示中のスライドのみ表示する */
-.carousel-track a[aria-hidden="false"] {
-    display: block;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
-}
-
-/* 非表示スライドのスクリーンリーダー対応 */
-.carousel-track a[aria-hidden="true"],
-.carousel-track img[aria-hidden="true"] {
-    display: none;
-    pointer-events: none;
-    opacity: 0;
-}
-
-/* リンク要素にフォーカスした時にボーダーを表示 */
-.carousel-track a:focus {
-    outline: 2px solid #ff0;
-    border: 2px solid #ff0;
-}
-
-/* ボタンフォーカスインジケーター */
-button:focus {
-    outline: 2px solid #ff0;
+.slider_dot[aria-selected="true"] {
+  color: red;
 }

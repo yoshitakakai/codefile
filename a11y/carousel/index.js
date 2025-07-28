@@ -66,7 +66,7 @@ function slider_slide(nextIndex) {
   if ($slideItems[currentIndex].contains(focused)) {
     focused.blur(); // ←★これでフォーカスを外す
   }
-  
+
   $slideItems[currentIndex].classList.remove(currentClass);
   $slideItems[currentIndex].setAttribute('aria-hidden', 'true');
   $slideItems[currentIndex].querySelectorAll(focusableSelector).forEach(el => el.setAttribute('tabindex', -1));
@@ -127,6 +127,7 @@ function dot_move(e) {
   const currentIndex = Array.from(dots).findIndex(dot => dot === e.currentTarget);
   let nextIndex = currentIndex;
 
+  //キーボード操作設定（Mac版safariだとcommand(Fn) + ←→ 、Chromeだとoption + ←→）
   if (e.key === 'ArrowLeft') {
     nextIndex = currentIndex > 0 ? currentIndex - 1 : dots.length - 1;
   } else if (e.key === 'ArrowRight') {

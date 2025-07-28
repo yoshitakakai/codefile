@@ -66,6 +66,7 @@ function slider_slide(nextIndex) {
   if ($slideItems[currentIndex].contains(focused)) {
     focused.blur(); // ←★これでフォーカスを外す
   }
+  
   $slideItems[currentIndex].classList.remove(currentClass);
   $slideItems[currentIndex].setAttribute('aria-hidden', 'true');
   $slideItems[currentIndex].querySelectorAll(focusableSelector).forEach(el => el.setAttribute('tabindex', -1));

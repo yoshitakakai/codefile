@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メニューボタン</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tab-area">
+        <ul class="tab-group" role="tablist">
+          <li role="presentation">
+            <button class="tab" role="tab" aria-controls="panel01" aria-selected="true">Tab A</button>
+          </li>
+          <li role="presentation">
+            <button class="tab" role="tab" aria-controls="panel02" aria-selected="false">Tab B</button>
+          </li>
+          <li role="presentation">
+            <button class="tab" role="tab" aria-controls="panel03" aria-selected="false">Tab C</button>
+          </li>
+        </ul>
+        <div class="panel-group">
+          <div class="panel" id="panel01" role="tabpanel" aria-hidden="false">Content A</div>
+          <div class="panel" id="panel02" role="tabpanel" aria-hidden="true">Content B</div>
+          <div class="panel" id="panel03" role="tabpanel" aria-hidden="true">Content C</div>
+        </div>
+    </div>
+    <script src="style.js"></script>
+</body>
+</html>

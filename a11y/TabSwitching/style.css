@@ -45,7 +45,8 @@ body {
     border: none;
     background-color: #6667ab;
     color: #fff;
-    /* タブヘッダー部分 opacity変化
+    
+    /* タブ opacity変化
     transition-property: color, background-color;
     transition-duration: 0.4s;
     transition-timing-function: ease; */
@@ -68,7 +69,7 @@ body {
     text-align: center;
   }
   
-  /* タブのボディ部分 */
+  /* パネル */
   .panel[aria-hidden="false"] {
     display: block;
     background: #6667ab;
